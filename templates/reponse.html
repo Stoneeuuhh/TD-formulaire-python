@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réponse</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 500px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Données reçues</h1>
+
+    <p>
+        <strong>Méthode utilisée :</strong>
+        {{ request.method }}
+    </p>
+
+    <table>
+        <tr>
+            <th>Champ</th>
+            <th>Valeur</th>
+        </tr>
+
+        <tr>
+            <td>Nom</td>
+            <td>{{ nom }}</td>
+        </tr>
+
+        <tr>
+            <td>Mail</td>
+            <td>{{ mail }}</td>
+        </tr>
+
+        <tr>
+            <td>Message</td>
+            <td>{{ message }}</td>
+        </tr>
+    </table>
+
+</body>
+</html>

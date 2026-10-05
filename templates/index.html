@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+</head>
+
+<body>
+
+    <form id="formulaire" action="/afficher/" method="POST">
+
+        Nom :
+        <br>
+        <input type="text" name="nom">
+        <br>
+
+        Mail :
+        <br>
+        <input type="text" name="mail">
+        <br>
+
+        Message :
+        <br>
+        <input type="text" name="message">
+        <br><br>
+
+        <label>
+            <input type="radio" name="method" value="POST" checked>
+            Envoyer les données avec POST
+        </label>
+
+        <br>
+
+        <label>
+            <input type="radio" name="method" value="GET">
+            Envoyer les données avec GET
+        </label>
+
+        <br><br>
+
+        <button type="submit">Envoyer</button>
+
+    </form>
+
+    <script>
+        const formulaire = document.getElementById("formulaire");
+
+        const radios = document.querySelectorAll('input[name="method"]');
+
+        radios.forEach(radio => {
+            radio.addEventListener("change", function() {
+                formulaire.method = this.value;
+            });
+        });
+    </script>
+
+</body>
+</html>
