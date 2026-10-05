@@ -3,56 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réponse</title>
+    <title>Résultat</title>
 
     <style>
-        table {
-            border-collapse: collapse;
-            width: 500px;
+        * {
+            box-sizing: border-box;
+            cursor: wait;
         }
 
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Papyrus", "Comic Sans MS", cursive;
+            background:
+                repeating-conic-gradient(#ff00ff 0% 10%, #00ff00 10% 20%, #ffff00 20% 30%, #00ffff 30% 40%);
+            animation: disco 2s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        @keyframes disco {
+            from { filter: hue-rotate(0deg); }
+            to   { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-6deg) scale(1); }
+            50%      { transform: rotate(6deg) scale(1.15); }
+        }
+
+        .container {
+            width: 650px;
+            background: #ff6a00;
+            padding: 12px 45px 45px 8px;
+            border: 14px ridge #7fff00;
+            outline: 8px dotted #ff00aa;
+            outline-offset: 10px;
+            border-radius: 80px 5px 80px 5px;
+            box-shadow: -25px 25px 0 #00f, 25px -25px 0 #f0f;
+            transform: rotate(-3deg);
+        }
+
+        h1 {
             text-align: left;
+            color: #39ff14;
+            background: #8b00ff;
+            font-size: 58px;
+            font-style: italic;
+            text-decoration: underline wavy red;
+            text-shadow: 4px 4px #ff0000, -4px -4px #00ffff;
+            letter-spacing: -3px;
+            margin: 10px -30px 10px 30px;
+            transform: rotate(7deg) skewX(-15deg);
+            animation: blink 0.8s steps(1) infinite;
+        }
+
+        .methode {
+            text-align: right;
+            background-color: #800080;
+            color: #ffa500;
+            padding: 3px 40px 30px 3px;
+            margin: 25px 0;
+            border: 9px groove #00ffff;
+            border-radius: 0 60px 0 60px;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .methode strong {
+            font-size: 48px;
+            color: #ffff00;
+            background: #ff0000;
+        }
+
+        table {
+            width: 108%;
+            border-collapse: separate;
+            border-spacing: 6px;
+            border: 10px double #ff0000;
+            background: #00ff9d;
+            transform: skewY(2deg);
         }
 
         th {
-            background-color: #ddd;
+            background-color: #ffff00;
+            color: #ffffff;
+            padding: 4px;
+            font-size: 26px;
+            text-shadow: 2px 2px #000;
+            border: 4px outset #ff00ff;
+        }
+
+        td {
+            padding: 22px 5px;
+            color: #ff00ff;
+            background: #ffff66;
+            font-size: 17px;
+            font-family: "Times New Roman", serif;
+            font-weight: 100;
+            border: 5px inset #0000ff;
+            word-break: break-all;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            font-size: 28px;
+            color: #00ff00;
+            background-color: #ff1493;
+            width: 30%;
+            writing-mode: vertical-rl;
+        }
+
+
+
+
+        .emoji {
+            text-align: center;
+            font-size: 90px;
+            letter-spacing: 25px;
+            animation: wobble 0.5s ease-in-out infinite;
+        }
+
+        .retour {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            padding: 25px;
+            background-color: #ffff00;
+            color: #00ff00;
+            text-decoration: line-through overline;
+            font-weight: bold;
+            font-size: 22px;
+            border: 8px dashed #ff0000;
+            border-radius: 50%;
+            box-shadow: 0 0 30px 10px #ff00ff;
+            animation: wobble 1s ease-in-out infinite;
+        }
+
+        .retour:hover {
+            background-color: #0000ff;
+            color: #ff0000;
+            font-size: 40px;
+            cursor: not-allowed;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Données reçues</h1>
+    <div class="container">
 
-    <p>
-        <strong>Méthode utilisée :</strong>
-        {{ request.method }}
-    </p>
+        <div class="emoji">🎉 🤓 🎉</div>
 
-    <table>
-        <tr>
-            <th>Champ</th>
-            <th>Valeur</th>
-        </tr>
+        <h1>Données reçues !</h1>
 
-        <tr>
-            <td>Nom</td>
-            <td>{{ nom }}</td>
-        </tr>
+        <div class="methode">
+             Méthode utilisée :
+            <strong>{{ request.method }}</strong>
+        </div>
 
-        <tr>
-            <td>Mail</td>
-            <td>{{ mail }}</td>
-        </tr>
+        <table>
+            <tr>
+                <th>Champ</th>
+                <th>Valeur</th>
+            </tr>
 
-        <tr>
-            <td>Message</td>
-            <td>{{ message }}</td>
-        </tr>
-    </table>
+            <tr>
+                <td> Nom</td>
+                <td>{{ nom }}</td>
+            </tr>
+
+            <tr>
+                <td> Mail</td>
+                <td>{{ mail }}</td>
+            </tr>
+
+            <tr>
+                <td> Message</td>
+                <td>{{ message }}</td>
+            </tr>
+        </table>
+
+        <a class="retour" href="/">
+             Retour au formulaire
+        </a>
+
+    </div>
 
 </body>
 </html>

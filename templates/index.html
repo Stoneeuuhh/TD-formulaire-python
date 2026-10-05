@@ -3,52 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire</title>
+    <title>Mon super formulaire</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            cursor: wait;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Papyrus", "Comic Sans MS", cursive;
+            background:
+                repeating-conic-gradient(#00ffff 0% 10%, #ff00ff 10% 20%, #ffff00 20% 30%, #00ff00 30% 40%);
+            animation: disco 2s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        @keyframes disco {
+            from { filter: hue-rotate(0deg); }
+            to   { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-6deg) scale(1); }
+            50%      { transform: rotate(6deg) scale(1.15); }
+        }
+
+        .container {
+            width: 500px;
+            background: #ff6a00;
+            padding: 10px 45px 45px 8px;
+            border: 14px ridge #7fff00;
+            outline: 8px dotted #ff00aa;
+            outline-offset: 10px;
+            border-radius: 5px 80px 5px 80px;
+            box-shadow: 25px 25px 0 #00f, -25px -25px 0 #f0f;
+            transform: rotate(3deg);
+        }
+
+        h1 {
+            text-align: right;
+            color: #39ff14;
+            background: #8b00ff;
+            font-size: 52px;
+            font-style: italic;
+            text-decoration: underline wavy red;
+            text-shadow: 4px 4px #ff0000, -4px -4px #00ffff;
+            letter-spacing: -3px;
+            margin: 10px 30px 20px -30px;
+            transform: rotate(-6deg) skewX(15deg);
+            animation: blink 0.8s steps(1) infinite;
+        }
+
+        label {
+            font-weight: 100;
+            font-size: 13px;
+            color: #ffff00;
+            background: #ff0000;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 2px 6px;
+        }
+
+        input[type="text"] {
+            width: 112%;
+            padding: 4px 30px 4px 4px;
+            margin: 8px 0 20px -10px;
+            background: #00ff9d;
+            color: #ff00ff;
+            border: 6px groove #ff00ff;
+            border-radius: 40px 0 40px 0;
+            font-size: 22px;
+            font-family: "Times New Roman", serif;
+            font-style: italic;
+            outline: none;
+            transform: skewX(-8deg);
+        }
+
+        input[type="text"]:focus {
+            border: 10px double #ff0000;
+            background-color: #ffff00;
+            color: #0000ff;
+            font-size: 30px;
+            transform: skewX(8deg) rotate(-2deg);
+        }
+
+        .methodes {
+            background-color: #800080;
+            color: #ffa500;
+            padding: 3px 40px 30px 3px;
+            border: 9px groove #00ffff;
+            border-radius: 0 60px 0 60px;
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        .methodes strong {
+            font-size: 13px;
+            color: #ffff00;
+            background: #ff0000;
+            text-transform: uppercase;
+        }
+
+        .methodes label {
+            display: block;
+            margin: 10px 0;
+            font-size: 24px;
+            color: #00ff00;
+            background: #ff1493;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        input[type="radio"] {
+            accent-color: #ffff00;
+            transform: scale(2.2) rotate(45deg);
+            margin: 0 20px 0 10px;
+        }
+
+        button {
+            width: 108%;
+            margin-top: 25px;
+            padding: 25px;
+            border: 8px dashed #ff0000;
+            border-radius: 50%;
+            background-color: #ffff00;
+            color: #00ff00;
+            font-family: inherit;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: line-through overline;
+            box-shadow: 0 0 30px 10px #ff00ff;
+            animation: wobble 1s ease-in-out infinite;
+        }
+
+        button:hover {
+            background-color: #0000ff;
+            color: #ff0000;
+            font-size: 40px;
+            cursor: not-allowed;
+        }
+
+        .emoji {
+            font-size: 90px;
+            letter-spacing: 25px;
+            text-align: center;
+            animation: wobble 0.5s ease-in-out infinite;
+        }
+    </style>
 </head>
 
 <body>
 
-    <form id="formulaire" action="/afficher/" method="POST">
+    <div class="container">
 
-        Nom :
-        <br>
-        <input type="text" name="nom">
-        <br>
+        <div class="emoji">🚀 🤪 📝</div>
 
-        Mail :
-        <br>
-        <input type="text" name="mail">
-        <br>
+        <h1>Mon super formulaire !</h1>
 
-        Message :
-        <br>
-        <input type="text" name="message">
-        <br><br>
+        <form id="formulaire" action="/afficher/" method="POST">
 
-        <label>
-            <input type="radio" name="method" value="POST" checked>
-            Envoyer les données avec POST
-        </label>
+            <label> Nom :</label>
+            <input type="text" name="nom" required>
 
-        <br>
+            <label> Mail :</label>
+            <input type="text" name="mail" required>
 
-        <label>
-            <input type="radio" name="method" value="GET">
-            Envoyer les données avec GET
-        </label>
+            <label> Message :</label>
+            <input type="text" name="message" required>
 
-        <br><br>
+            <div class="methodes">
+                <strong> Comment envoyer les données ?</strong>
 
-        <button type="submit">Envoyer</button>
+                <label>
+                    <input type="radio" name="method" value="POST" checked>
+                     POST
+                </label>
 
-    </form>
+                <label>
+                    <input type="radio" name="method" value="GET">
+                     GET
+                </label>
+            </div>
+
+            <button type="submit"> Envoyer ! </button>
+
+        </form>
+
+    </div>
 
     <script>
         const formulaire = document.getElementById("formulaire");
 
-        const radios = document.querySelectorAll('input[name="method"]');
-
-        radios.forEach(radio => {
+        document.querySelectorAll('input[name="method"]').forEach(radio => {
             radio.addEventListener("change", function() {
                 formulaire.method = this.value;
             });
